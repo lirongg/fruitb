@@ -3,12 +3,19 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require('dotenv').config();
 
+const fruitRoutes = require('./routes/fruitRoutes')
+const orderRoutes = require('./routes/orderRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/api/fruits', fruitRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/users', userRoutes);
 
 app.listen(port, function () {
   console.log(`Express app is running on port ${port}`);
