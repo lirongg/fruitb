@@ -20,6 +20,6 @@ const fruitSchema = mongoose.Schema(
     }
 );
 
-const Fruit = mongoose.model("fruit", fruitSchema)
+const Fruit = mongoose.model("Fruit", fruitSchema)
 
 module.exports = Fruit;
