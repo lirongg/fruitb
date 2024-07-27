@@ -1,17 +1,12 @@
-import axios from 'axios';
-
+// API modules are where the code lives to communicate
+// with the server via AJAX
+import sendRequest from './send-request';
 const BASE_URL = 'http://localhost:5001/api/users/';
 
-const createUser = (user) => {
-    return axios.post(`${BASE_URL}`, user);
+export function signUp(user) {
+  return sendRequest(BASE_URL, 'POST', user);
 }
 
-const signIn = (user) => {
-    return axios.post(`${BASE_URL}signin`, user);
-}
-
-
-export default {
-    createUser,
-    signIn,
+export function login(credentials) {
+  return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
 }

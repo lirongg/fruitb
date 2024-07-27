@@ -3,10 +3,12 @@ import FruitList from '../components/FruitList';
 import Cart from '../components/Cart';
 import OrderSummary from './OrderSummary';
 
-const HomePage = ({ user}) => {
+const HomePage = ({ user }) => {
   const [cartItems, setCartItems] = useState([]);
   const [fruitList, setFruitList] = useState([]);
-  
+
+  console.log('User in HomePage:', user);
+
   const addToCart = (fruit) => {
     const existingItem = cartItems.find(item => item._id === fruit._id);
     if (existingItem) {
@@ -21,7 +23,13 @@ const HomePage = ({ user}) => {
   return (
     <div>
       <FruitList addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
-      <Cart cartItems={cartItems} setCartItems={setCartItems} fruitList={fruitList} setFruitList={setFruitList} />
+      <Cart
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        fruitList={fruitList}
+        setFruitList={setFruitList}
+        username={user ? user.username : 'Guest'}
+      />
       <OrderSummary cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );
