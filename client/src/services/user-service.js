@@ -1,20 +1,32 @@
-import usersAPI from './userService';
-import axios from 'axios';
+// Serice modules hold the code that implements
+// "business"/application logic
+// Service methods often depend upon or use
+// methods in the API modules
+
+// Import all named exports
+import * as usersAPI from './userService';
+
+export async function signUp(user) {
+  // Delegate the AJAX request to the users-api.js
+  // module.
+  const token = await usersAPI.signUp(user);
+  localStorage.setItem('token', token);
+  return getUser();
+}
 
 function isValidToken(token) {
   if (typeof token !== 'string') return false;
   const parts = token.split('.');
-  if (parts.length !== 3) {
-    return false;
-  }
-  try {
-    atob(parts[1]);
-    return true;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
+  return parts.length === 3 && parts.every(part => {
+    try {
+      atob(part);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  });
 }
+
 
 export function getToken() {
   const token = localStorage.getItem('token');
@@ -27,38 +39,24 @@ export function getToken() {
   return token;
 }
 
+
 export function getUser() {
   const token = getToken();
-  return token ? JSON.parse(atob(token.split('.')[1])).user : null;
-  
+  return token ?
+    JSON.parse(atob(token.split('.')[1])).user
+    :
+    null;
 }
-
 
 export function logOut() {
   localStorage.removeItem('token');
-}
-
-export async function registerOrLoginUser(userData, isSignup) {
-  try {
-    const BASE_URL = 'http://localhost:5001/api/users/';
-    const url = isSignup ? `${BASE_URL}` : `${BASE_URL}signin`;
-    const response = await axios.post(url, userData);
-    return response.data; 
-  } catch (error) {
-    console.error("API Error:", error); 
-    throw error;
-  }
+  console.log('User data cleared from localStorage.');
 }
 
 export async function login(credentials) {
-  const user = await registerOrLoginUser(credentials, false);
-  return user;
-}
-
-export default {
-  registerOrLoginUser,
-  getToken,
-  getUser,
-  logOut,
-  login
+  // Delegate the AJAX request to the users-api.js
+  // module.
+  const token = await usersAPI.login(credentials);
+  localStorage.setItem('token', token);
+  return getUser();
 }

@@ -6,16 +6,18 @@ const Cart = ({ cartItems, setCartItems, username, fruitList, setFruitList }) =>
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
+    console.log('Username in Cart component:', username);
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
     setTotalAmount(total);
-  }, [cartItems]);
+  }, [cartItems, username]);
 
   const handleOrderSubmit = async () => {
     const order = {
-      customerName: 'customer',
+      customerName: username, // Use the passed username here
       fruits: cartItems.map(item => ({ fruit: item._id, quantity: item.quantity })),
       totalAmount,
     };
+    console.log('Order customerName:', username);
 
     try {
       const response = await orderService.createOrder(order);

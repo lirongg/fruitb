@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import HomePage from './pages/HomePage';
-import DashboardPage from './pages/DashboardPage';
-import OrderConfirmed from './components/OrderConfirmed'; // Ensure the import path is correct
-import CartPage from './pages/CartPage'; // Ensure you've imported CartPage
-import { getUser } from './services/user-service';
+import React, { useState, useEffect } from 'react';
+import Cart from '../components/Cart';
+import fruitService from '../services/fruitService';
 
-function App() {
-  const [user, setUser] = useState(getUser());
-  const [cartItems, setCartItems] = useState([]);
-  const [fruitList, setFruitList] = useState([]);
+const CartPage = ({ user, cartItems, setCartItems, fruitList, setFruitList }) => {
+  useEffect(() => {
+    const fetchFruits = async () => {
+      try {
+        const response = await fruitService.getFruits();
+        setFruitList(response.data); // Assuming the API returns the data array directly
+      } catch (error) {
+        console.error('Failed to fetch fruits:', error);
+      }
+    };
+
+    fetchFruits();
+  }, [setFruitList]);
+
+  console.log('User in CartPage:', user);
 
   return (
-    <div className="App">
-      <Router>
-        <Header role={user?.role} />
-        <Routes>
-          <Route path="/" element={<HomePage user={user} />} />
-          {user?.role === 'owner' && <Route path="/dashboard" element={<DashboardPage user={user} />} />}
-          {user?.role === 'customer' && (
-            <>
-              <Route path="/cart" element={<CartPage user={user} cartItems={cartItems} setCartItems={setCartItems} fruitList={fruitList} setFruitList={setFruitList} />} />
-              <Route path="/order-confirmation" element={<OrderConfirmed order={{ customerName: 'customer', fruits: [], totalAmount: 0 }} />} />
-            </>
-          )}
-          <Route path="/*" element={<LoginPage setUser={setUser} />} />
-        </Routes>
-      </Router>
+    <div>
+      <h1>Your Cart</h1>
+      <Cart
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        username={user ? user.username : 'Guest'}
+        fruitList={fruitList}
+        setFruitList={setFruitList}
+      />
     </div>
   );
-}
+};
 
-export default App;
+export default CartPage;
