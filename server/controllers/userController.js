@@ -43,8 +43,8 @@ async function signIn(req, res) {
 
 function createJWT(user) {
     return jwt.sign(
-        { userId: user._id, username: user.username, role: user.role },  // Include specific user details in the payload
-        process.env.SECRET,  // Make sure SECRET is defined in your environment variables
+        { userId: user._id, username: user.username, role: user.role },  
+        process.env.SECRET,  
         { expiresIn: "24h" }
     );
 }

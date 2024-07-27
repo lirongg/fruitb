@@ -6,6 +6,9 @@ const getFruits = () => {
     return axios.get(URL)
 }
 
+const updateQuantity = (id, quantity) => {
+    return axios.put(`${URL}${id}`, {quantity})
+}
 export default {
-    getFruits
+    getFruits, updateQuantity
 }

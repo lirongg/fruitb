@@ -3,8 +3,9 @@ const Fruit = require('../models/fruitModel');
 
 async function createOrder(req, res) {
   
-        const {customerName, fruits, totalAmount} = req.body
+        const {orderId, customerName, fruits, totalAmount} = req.body
         const order = new Order({
+            orderId,
             customerName,
             fruits,
             totalAmount,
