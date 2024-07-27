@@ -13,6 +13,8 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
+app.use(require('./config/checkToken'))
+
 app.use('/api/fruits', fruitRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
