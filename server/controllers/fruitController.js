@@ -28,4 +28,32 @@ async function getFruits(req, res) {
     }
 }
 
-module.exports = {getFruits, createFruits}
+async function updateQuantity(req, res) {
+    try {
+        const { id } = req.params; 
+        const { quantity } = req.body; 
+
+        if (typeof quantity !== 'number') {
+            return res.status(400).json({ error: 'Invalid quantity' });
+        }
+
+    
+        const updatedFruit = await Fruit.findByIdAndUpdate(
+            id,
+            { $inc: { stock: quantity } }, 
+            { new: true } 
+        );
+
+        if (!updatedFruit) {
+            return res.status(404).json({ error: 'Fruit not found' });
+        }
+
+        res.status(200).json(updatedFruit); 
+    } catch (error) {
+        console.error('Error updating quantity:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+
+module.exports = {getFruits, createFruits, updateQuantity}

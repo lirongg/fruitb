@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 header {
@@ -8,8 +8,3 @@ header {
   color: white;
 }
 
-nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-}
