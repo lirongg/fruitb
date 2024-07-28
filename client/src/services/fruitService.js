@@ -6,9 +6,13 @@ const getFruits = () => {
     return axios.get(URL)
 }
 
+const createFruits = (fruit) => {
+    return axios.post(`${URL}create`, fruit)
+}
+
 const updateQuantity = (id, quantity) => {
     return axios.put(`${URL}${id}`, {quantity})
 }
 export default {
-    getFruits, updateQuantity
+    getFruits, updateQuantity, createFruits
 }

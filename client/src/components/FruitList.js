@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fruitService from "../services/fruitService";
 
-const FruitList = ({ cartItems, setCartItems }) => {
+const FruitList = ({ cartItems, setCartItems, user }) => {
   const [fruits, setFruits] = useState([]);
 
   useEffect(() => {
@@ -40,12 +40,15 @@ const FruitList = ({ cartItems, setCartItems }) => {
 
   return (
     <div>
-      <h1>Available Fruits</h1>
+      <h2>Available Fruits</h2>
       <ul>
         {fruits.map(fruit => (
           <li key={fruit._id}>
             {fruit.fruit} - ${fruit.price.toFixed(2)} (Stock: {fruit.stock})
-            <button onClick={() => handleAddToCart(fruit)} disabled={fruit.stock <= 0}>
+            <button 
+              onClick={() => handleAddToCart(fruit)} 
+              disabled={fruit.stock <= 0 || !user} 
+            >
               Add to Cart
             </button>
           </li>
