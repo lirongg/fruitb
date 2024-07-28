@@ -54,8 +54,10 @@
   - React.js
   - React Router
   - Axios (for API requests)
+  - Deploy using Vercel
 
 - **Backend**
   - Node.js
   - Express.js
   - MongoDB (with Mongoose for data modeling)
+  - Deploy using Render
