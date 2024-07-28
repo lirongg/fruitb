@@ -4,7 +4,7 @@ const Counter = require('./counterModel'); // Ensure the path is correct
 const orderSchema = mongoose.Schema({
     orderId: {
         type: String,
-        unique: true, // Ensures each order ID is unique
+        unique: true, 
     },
     customerName: {
         type: String,

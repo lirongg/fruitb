@@ -59,7 +59,7 @@ const Cart = ({ cartItems, setCartItems, username, fruitList, setFruitList }) =>
           </li>
         ))}
       </ul>
-      <h3>Total Amount: ${totalAmount.toFixed(2)}</h3>
+      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
       <button onClick={handleOrderSubmit}>Place Order</button>
     </div>
   );

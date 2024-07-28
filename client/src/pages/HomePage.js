@@ -22,15 +22,21 @@ const HomePage = ({ user }) => {
 
   return (
     <div>
-      <FruitList addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
-      <Cart
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        fruitList={fruitList}
-        setFruitList={setFruitList}
-        username={user ? user.username : 'Guest'}
-      />
-      <OrderSummary cartItems={cartItems} setCartItems={setCartItems} />
+      <FruitList addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} user={user} />
+      {user ? (
+        <>
+          <Cart
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            fruitList={fruitList}
+            setFruitList={setFruitList}
+            username={user.username}
+          />
+          <OrderSummary cartItems={cartItems} setCartItems={setCartItems} user={user}/>
+        </>
+      ) : (
+        <p>Please log in to view your cart and order history.</p>
+      )}
     </div>
   );
 };

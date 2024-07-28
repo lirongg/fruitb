@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
-import { useNavigate } from 'react-router-dom';
 
-export default function AuthPage({ setUser }) {
+const AuthPage = ({ setUser }) => {
   const [showLogin, setShowLogin] = useState(true);
   const navigate = useNavigate();
 
   const handleLogin = (user) => {
     setUser(user);
-    navigate(user.role === 'owner' ? '/dashboard' : '/');
+    if (user.role === 'owner') {
+      navigate('/dashboard');
+    } else {
+      navigate('/');
+    }
   };
 
   return (
@@ -20,4 +24,6 @@ export default function AuthPage({ setUser }) {
       {showLogin ? <LoginForm setUser={handleLogin} /> : <SignUpForm setUser={handleLogin} />}
     </main>
   );
-}
+};
+
+export default AuthPage;

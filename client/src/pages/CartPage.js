@@ -20,7 +20,7 @@ const CartPage = ({ user, cartItems, setCartItems, fruitList, setFruitList }) =>
 
   return (
     <div>
-      <h1>Your Cart</h1>
+      <h2>Your Cart</h2>
       <Cart
         cartItems={cartItems}
         setCartItems={setCartItems}
