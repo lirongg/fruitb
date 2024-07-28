@@ -79,7 +79,7 @@ async function reOrder(req,res) {
         }
 
         const newOrder = new Order({
-            username: order.customerName,
+            customerName: order.customerName,
             fruits: order.fruits.map(fruit => ({
                 fruit: fruit.fruit._id,
                 quantity: fruit.quantity

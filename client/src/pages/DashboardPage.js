@@ -6,7 +6,7 @@ const DashboardPage = ({ user }) => {
     const [orders, setOrders] = useState([]);
     const [sales, setSales] = useState([]);
     const [error, setError] = useState(null);
-    const [newFruit, setNewFruit] = useState({ name: '', price: '', stock: '' });
+    const [newFruit, setNewFruit] = useState({ fruit: '', price: '', stock: '' });
     const [fruits, setFruits] = useState([]);
 
     useEffect(() => {
@@ -47,9 +47,9 @@ const DashboardPage = ({ user }) => {
 
     const handleAddFruit = async () => {
         try {
-            const response = await fruitService.addFruit(newFruit);
+            const response = await fruitService.createFruits(newFruit);
             setFruits([...fruits, response.data]);
-            setNewFruit({ name: '', price: '', stock: '' });
+            setNewFruit({ fruit: '', price: '', stock: '' });
         } catch (err) {
             setError('Failed to add fruit. Please try again later.');
             console.error(err);
@@ -79,7 +79,7 @@ const DashboardPage = ({ user }) => {
                         <ul>
                             {order.fruits.map(fruit => (
                                 <li key={fruit.fruit._id}>
-                                    {fruit.fruit.name} (Price: ${fruit.fruit.price.toFixed(2)}) - Quantity: {fruit.quantity}
+                                    {fruit.fruit.fruit} (Price: ${fruit.fruit.price.toFixed(2)}) - Quantity: {fruit.quantity}
                                 </li>
                             ))}
                         </ul>
@@ -101,7 +101,7 @@ const DashboardPage = ({ user }) => {
                 type="text"
                 placeholder="Name"
                 value={newFruit.fruit}
-                onChange={e => setNewFruit({ ...newFruit, name: e.target.value })}
+                onChange={e => setNewFruit({ ...newFruit, fruit: e.target.value })}
             />
             <input
                 type="number"

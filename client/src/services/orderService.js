@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const URL = 'https://fruitb.onrender.com/api/orders/';
+// const URL = 'http://localhost:5001/api/orders/';
 
 const createOrder = (order) => {
     return axios.post(URL, order);
