@@ -45,7 +45,7 @@ Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS Web App.
    - Displays the order ID, fruits, quantities, and total amount.
 
 4. **Dashboard (Owner)**
-   - Displays total sales for each day.
+   - Displays total sales.
   
 5. **Fruits Management (Owner)**
    
