@@ -1,5 +1,5 @@
 # Fruit Store POS Application
-
+Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS application.
 
 ## User Stories Implemented
 
@@ -31,22 +31,29 @@
 
 
 ## Features
-1. **Homepage**
+1. **Homepage (Customer)**
    - Displays a list of available fruits with their prices and stock levels.
    - Allows customers to add fruits to their cart.
 
-2. **Cart**
+2. **Cart (Customer)**
    - Shows the fruits and quantities that the customer has added to their cart.
    - Displays the total amount for the items in the cart.
    - Allows customers to place an order.
 
-3. **Order Confirmation**
+3. **Order Confirmation (Customer)**
    - Confirms the order details after the customer places an order.
    - Displays the order ID, fruits, quantities, and total amount.
 
 4. **Dashboard (Owner)**
-   - Displays a list of all orders submitted by customers.
+   - Displays total sales for each day.
+  
+5. **Fruits Management (Owner)**
+   
    - Shows details of each order including the customer name, fruits ordered, quantities, and total amount.
+  
+6. **All Orders(Owner)**
+   - Displays a list of all orders submitted by customers.
+   
 
 ## Technologies Used
 
@@ -61,3 +68,8 @@
   - Express.js
   - MongoDB (with Mongoose for data modeling)
   - Deploy using Render
+ 
+## Getting Started
+
+Visit the deployed Fruitb app:
+- **URL:** [Fruitb](https://project-4-fe.vercel.app/)
