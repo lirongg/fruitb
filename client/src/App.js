@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import DashboardPage from './pages/DashboardPage';
+import CartPage from './pages/CartPage';
+import ManageFruits from './pages/ManageFruits';
+import OrderSummary from './pages/OrderSummary';
+import AllOrders from './pages/AllOrders';
 import AuthPage from './pages/AuthPage';
 import { getUser } from './services/user-service';
 
@@ -24,7 +28,11 @@ function App() {
         <Routes>
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
           <Route path="/" element={<HomePage user={user} />} />
+          <Route path="/cart" element={role === 'customer' ? <CartPage user={user} />: <Navigate to="/"/>} />
+          <Route path="/order-summary" element={role === 'customer' ? <OrderSummary user={user} />: <Navigate to="/"/>} />
           <Route path="/dashboard" element={role === 'owner' ? <DashboardPage user={user} /> : <Navigate to="/" />} />
+          <Route path="/all-orders" element={role === 'owner' ? <Allorders user={user} /> : <Navigate to="/" />} />
+          <Route path="/manage-fruits" element={role === 'owner' ? <ManageFruits user={user} /> : <Navigate to="/" />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
