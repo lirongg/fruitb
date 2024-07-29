@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from "react";
-import orderService from "../services/orderService";
 import fruitService from "../services/fruitService";
 
 const DashboardPage = ({ user }) => {
-    const [orders, setOrders] = useState([]);
     const [sales, setSales] = useState([]);
     const [error, setError] = useState(null);
     const [newFruit, setNewFruit] = useState({ fruit: '', price: '', stock: '' });
     const [fruits, setFruits] = useState([]);
 
     useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                const response = await orderService.getOrders();
-                setOrders(response.data);
-            } catch (err) {
-                setError('Failed to fetch orders. Please try again later.');
-                console.error(err);
-            }
-        };
-
         const fetchSales = async () => {
             try {
                 const response = await orderService.getSales();
@@ -40,7 +28,6 @@ const DashboardPage = ({ user }) => {
             }
         };
 
-        fetchOrders();
         fetchSales();
         fetchFruits();
     }, []);
@@ -70,25 +57,8 @@ const DashboardPage = ({ user }) => {
         <div>
             <h1>Owner Dashboard</h1>
 
-            <h2>Orders</h2>
-            {error && <p>{error}</p>}
-            <ul>
-                {orders.map(order => (
-                    <li key={order._id}>
-                        <h3>Order by: {order.customerName}</h3>
-                        <ul>
-                            {order.fruits.map(fruit => (
-                                <li key={fruit.fruit._id}>
-                                    {fruit.fruit.fruit} (Price: ${fruit.fruit.price.toFixed(2)}) - Quantity: {fruit.quantity}
-                                </li>
-                            ))}
-                        </ul>
-                        <p>Total Amount: ${order.totalAmount.toFixed(2)}</p>
-                    </li>
-                ))}
-            </ul>
-
             <h2>Sales</h2>
+            {error && <p>{error}</p>}
             {sales.map((sale, index) => (
                 <div key={index}>
                     <p>Date: {`${sale._id.year}-${sale._id.month}-${sale._id.day}`}</p>
