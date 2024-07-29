@@ -1,5 +1,5 @@
-# Fruit Store POS Application
-Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS application.
+# Fruit Store POS Web App
+Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS Web App.
 
 ## User Stories Implemented
 
