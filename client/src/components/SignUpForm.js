@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { signUp } from '../services/userService';
 
-export default class SignUpForm extends Component {
+class SignUpForm extends Component {
   state = {
     username: '',
     password: '',
@@ -16,8 +16,8 @@ export default class SignUpForm extends Component {
       delete formData.confirm;
       delete formData.error;
       const user = await signUp(formData);
-      console.log('Signed up user:', user); // Log the user object
-      this.props.setUser(user); // Ensure the user object includes username
+      console.log('Signed up user:', user); 
+      this.props.setUser(user); 
     } catch {
       this.setState({
         error: 'Sign Up Failed - Try Again'
@@ -38,13 +38,13 @@ export default class SignUpForm extends Component {
       <div>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Username</label>
-            <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-            <label>Confirm</label>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-            <button type="submit" disabled={disable}>SIGN UP</button>
+              <label>Username</label>
+              <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required />
+              <label>Password</label>
+              <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
+              <label>Confirm</label>
+              <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
+              <button type="submit" disabled={disable}>SIGN UP</button>
           </form>
         </div>
         <p className="error-message">&nbsp;{this.state.error}</p>
@@ -52,3 +52,5 @@ export default class SignUpForm extends Component {
     );
   }
 }
+
+export default SignUpForm;

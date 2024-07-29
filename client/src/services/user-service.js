@@ -1,14 +1,9 @@
-// Serice modules hold the code that implements
-// "business"/application logic
-// Service methods often depend upon or use
-// methods in the API modules
 
 // Import all named exports
 import * as usersAPI from './userService';
 
 export async function signUp(user) {
-  // Delegate the AJAX request to the users-api.js
-  // module.
+
   const token = await usersAPI.signUp(user);
   localStorage.setItem('token', token);
   return getUser();
@@ -54,8 +49,7 @@ export function logOut() {
 }
 
 export async function login(credentials) {
-  // Delegate the AJAX request to the users-api.js
-  // module.
+
   const token = await usersAPI.login(credentials);
   localStorage.setItem('token', token);
   return getUser();

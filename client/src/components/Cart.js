@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import orderService from '../services/orderService';
 import fruitService from '../services/fruitService';
 
-const Cart = ({ cartItems, setCartItems, username, fruitList, setFruitList }) => {
+const Cart = ({ cartItems = [], setCartItems, username, fruitList, setFruitList }) => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
@@ -13,11 +13,10 @@ const Cart = ({ cartItems, setCartItems, username, fruitList, setFruitList }) =>
 
   const handleOrderSubmit = async () => {
     const order = {
-      customerName: username, // Use the passed username here
+      customerName: username, 
       fruits: cartItems.map(item => ({ fruit: item._id, quantity: item.quantity })),
       totalAmount,
     };
-    console.log('Order customerName:', username);
 
     try {
       const response = await orderService.createOrder(order);
@@ -44,14 +43,12 @@ const Cart = ({ cartItems, setCartItems, username, fruitList, setFruitList }) =>
       const updatedList = await fruitService.getFruits();
       setFruitList(updatedList.data);
     } catch (error) {
-      console.error('Error updating fruit quantities:', error);
       alert('Error updating fruit quantities. Please try again');
     }
   };
 
   return (
     <div>
-      <h2>Your Cart</h2>
       <ul>
         {cartItems.map(item => (
           <li key={item._id}>
