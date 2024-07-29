@@ -10,8 +10,20 @@ const Header = ({ role, user, setUser }) => {
         <header>
             <h1>Fruit Store</h1>
             <nav>
-                {user && role === 'customer' && <Link to="/">Home</Link>}
-                {user && role === 'owner' && <Link to="/dashboard">Dashboard</Link>}
+                {user && role === 'customer' && (
+                    <>
+                        <Link to="/">Home</Link>
+                        <Link to="/cart">Cart</Link>
+                        <Link to="/order-summary">Order Summary</Link>
+        </>
+        )}
+                {user && role === 'owner' && (
+                    <>
+                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/all-orders">All Orders</Link>
+                    <Link to="/manage-fruits">Manage Fruits</Link>
+                    </>
+                    )}
             </nav>
             {user ? (
                 <>
