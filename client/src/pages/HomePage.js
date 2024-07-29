@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import FruitList from '../components/FruitList';
-import Cart from '../components/Cart';
-import OrderSummary from './OrderSummary';
 
-const HomePage = ({ user }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [fruitList, setFruitList] = useState([]);
-
+const HomePage = ({ user, cartItems, setCartItems, fruitList, setFruitList }) => {
   console.log('User in HomePage:', user);
 
   const addToCart = (fruit) => {
@@ -23,20 +18,6 @@ const HomePage = ({ user }) => {
   return (
     <div>
       <FruitList addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} user={user} />
-      {user ? (
-        <>
-          <Cart
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            fruitList={fruitList}
-            setFruitList={setFruitList}
-            username={user.username}
-          />
-          <OrderSummary cartItems={cartItems} setCartItems={setCartItems} user={user}/>
-        </>
-      ) : (
-        <p>Please log in to view your cart and order history.</p>
-      )}
     </div>
   );
 };

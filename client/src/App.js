@@ -14,6 +14,8 @@ import { getUser } from './services/user-service';
 function App() {
   const [user, setUser] = useState(getUser());
   const [role, setRole] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+  const [fruitList, setFruitList] = useState([]);
 
   useEffect(() => {
     if (user) {
@@ -32,11 +34,11 @@ function App() {
         <Header user={user} setUser={setUser} role={role} />
         <Routes>
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
-          <Route path="/" element={<HomePage user={user} />} />
-          <Route path="/cart" element={role === 'customer' ? <CartPage user={user} />: <Navigate to="/"/>} />
+          <Route path="/" element={<HomePage user={user} cartItems={cartItems} setCartItems={setCartItems} fruitList={fruitList} setFruitList={setFruitList} />} />
+          <Route path="/cart" element={<CartPage user={user} cartItems={cartItems} setCartItems={setCartItems} fruitList={fruitList} setFruitList={setFruitList} />} />
           <Route path="/order-summary" element={role === 'customer' ? <OrderSummary user={user} />: <Navigate to="/"/>} />
           <Route path="/dashboard" element={role === 'owner' ? <DashboardPage user={user} /> : <Navigate to="/" />} />
-          <Route path="/all-orders" element={role === 'owner' ? <Allorders user={user} /> : <Navigate to="/" />} />
+          <Route path="/all-orders" element={role === 'owner' ? <AllOrders user={user} /> : <Navigate to="/" />} />
           <Route path="/manage-fruits" element={role === 'owner' ? <ManageFruits user={user} /> : <Navigate to="/" />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

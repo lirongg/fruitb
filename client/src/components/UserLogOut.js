@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../services/user-service';
 
-export default function UserLogOut({ user, setUser }) {
+function UserLogOut({ user, setUser }) {
   const navigate = useNavigate();
 
   function handleLogOut() {
@@ -10,7 +10,7 @@ export default function UserLogOut({ user, setUser }) {
     logOut();
     setUser(null);
     console.log('User set to null.');
-    navigate('/auth'); // Redirect to the login page or home page after logout
+    navigate('/auth'); 
   }
 
   return (
@@ -19,3 +19,5 @@ export default function UserLogOut({ user, setUser }) {
     </div>
   );
 }
+
+export default UserLogOut;

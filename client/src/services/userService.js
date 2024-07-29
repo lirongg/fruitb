@@ -1,5 +1,4 @@
-// API modules are where the code lives to communicate
-// with the server via AJAX
+
 import sendRequest from './send-request';
 const BASE_URL = 'https://fruitb.onrender.com/api/users/';
 // const BASE_URL = 'http://localhost:5001/api/users/';

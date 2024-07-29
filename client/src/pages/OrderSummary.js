@@ -6,7 +6,7 @@ const OrderSummary = ({ user }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('User in OrderSummary:', user); // Log the user object
+    console.log('User in OrderSummary:', user); 
 
     if (user) {
       const fetchOrders = async () => {

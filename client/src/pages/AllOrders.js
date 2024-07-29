@@ -26,6 +26,7 @@ const AllOrders = () => {
       <ul>
         {orders.map(order => (
           <li key={order._id}>
+          <h3>Order ID: {order._id}</h3>
             <h3>Order by: {order.customerName}</h3>
             <ul>
               {order.fruits.map(fruit => (

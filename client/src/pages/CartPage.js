@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Cart from '../components/Cart';
 import fruitService from '../services/fruitService';
 
@@ -7,7 +7,7 @@ const CartPage = ({ user, cartItems, setCartItems, fruitList, setFruitList }) =>
     const fetchFruits = async () => {
       try {
         const response = await fruitService.getFruits();
-        setFruitList(response.data); // Assuming the API returns the data array directly
+        setFruitList(response.data); 
       } catch (error) {
         console.error('Failed to fetch fruits:', error);
       }

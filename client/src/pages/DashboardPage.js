@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import orderService from "../services/orderService";
 
 const DashboardPage = ({ user }) => {
-    const [sales, setSales] = useState([]);
+    const [fruitSales, setFruitSales] = useState([]);
+    const [overallSales, setOverallSales] = useState(0);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchSales = async () => {
             try {
                 const response = await orderService.getSales();
-                setSales(response.data);
+                setFruitSales(response.data.fruitSales);
+                setOverallSales(response.data.overallSales);
             } catch (err) {
                 setError('Failed to fetch sales. Please try again later.');
                 console.error(err);
@@ -25,10 +27,12 @@ const DashboardPage = ({ user }) => {
 
             <h2>Sales</h2>
             {error && <p>{error}</p>}
-            {sales.map((sale, index) => (
+            <h3>Overall Sales: ${overallSales.toFixed(2)}</h3>
+            {fruitSales.map((sale, index) => (
                 <div key={index}>
-                    <p>Date: {`${sale._id.year}-${sale._id.month}-${sale._id.day}`}</p>
-                    <p>Total Sales: ${sale.totalSales}</p>
+                    <p>Fruit: {sale.fruit}</p>
+                    <p>Total Sales: ${sale.totalSales.toFixed(2)}</p>
+                    <p>Total Quantity: {sale.totalQuantity}</p>
                 </div>
             ))}
         </div>

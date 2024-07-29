@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as usersService from '../services/userService';
 
-export default function LoginForm({ setUser }) {
+function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -18,8 +18,8 @@ export default function LoginForm({ setUser }) {
     console.log('Submitted credentials:', credentials);
     try {
       const user = await usersService.login(credentials);
-      console.log('Logged in user:', user); // Log the user object
-      setUser(user); // Ensure the user object includes username
+      console.log('Logged in user:', user); 
+      setUser(user); 
     } catch (err) {
       console.error('Login error:', err);
       setError('Log In Failed - Try Again');
@@ -41,3 +41,5 @@ export default function LoginForm({ setUser }) {
     </div>
   );
 }
+
+export default LoginForm;
