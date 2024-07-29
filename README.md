@@ -72,4 +72,4 @@ Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS application.
 ## Getting Started
 
 Visit the deployed Fruitb app:
-- **URL:** [Fruitb](https://project-4-fe.vercel.app/)
+- **URL:** [Fruitb](https://fruitb.vercel.app/)
