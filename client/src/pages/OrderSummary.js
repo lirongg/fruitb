@@ -53,7 +53,7 @@ const OrderSummary = ({ user }) => {
             <ul>
               {order.fruits.map(fruit => (
                 <li key={fruit._id}>
-                  Fruit: {fruit.fruit.name} (Price: ${fruit.fruit.price.toFixed(2)||'0.00'}) - Quantity: {fruit.quantity}
+                  Fruit: {fruit.fruit.name} (Price: ${fruit?.fruit?.price?.toFixed(2) || '0.00'}) - Quantity: {fruit.quantity}
                 </li>
               ))}
             </ul>
