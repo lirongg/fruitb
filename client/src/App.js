@@ -21,6 +21,11 @@ function App() {
     }
   }, [user]);
 
+  useEffect(() => {
+    console.log('User in App:', user);
+    console.log('Role in App:', role);
+  }, [user, role]);
+
   return (
     <div className="App">
       <Router>
