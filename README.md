@@ -54,6 +54,21 @@ Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS Web App.
 6. **All Orders(Owner)**
    - Displays a list of all orders submitted by customers.
    
+## Features
+
+1. **Homepage & Login page**
+ ![HomePage Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/HomePage.png)
+ ![Login Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Login.png)
+
+2. **Customer Pages**
+ ![Customer HomePage Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Customer HomePage.png)
+ ![Cart Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Customer Cart.png)
+ ![Order History Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/customer order history.png)
+
+3. **Owner Pages**
+ ![Dashboard Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Owner Total sales.png)
+ ![All Orders Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/owner all orders.png)
+ ![Manage Fruit Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Owner Manage Fruits.png)
 
 ## Technologies Used
 
