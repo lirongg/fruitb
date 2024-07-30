@@ -10,8 +10,8 @@ const DashboardPage = ({ user }) => {
         const fetchSales = async () => {
             try {
                 const response = await orderService.getSales();
-                setFruitSales(response.data.fruitSales);
-                setOverallSales(response.data.overallSales);
+                setFruitSales(response.data.fruitSales || []);
+                setOverallSales(response.data.overallSales || 0);
             } catch (err) {
                 setError('Failed to fetch sales. Please try again later.');
                 console.error(err);
@@ -28,13 +28,17 @@ const DashboardPage = ({ user }) => {
             <h2>Sales</h2>
             {error && <p>{error}</p>}
             <h3>Overall Sales: ${overallSales.toFixed(2)}</h3>
-            {fruitSales.map((sale, index) => (
-                <div key={index}>
-                    <p>Fruit: {sale.fruit}</p>
-                    <p>Total Sales: ${sale.totalSales.toFixed(2)}</p>
-                    <p>Total Quantity: {sale.totalQuantity}</p>
-                </div>
-            ))}
+            {fruitSales.length > 0 ? (
+                fruitSales.map((sale, index) => (
+                    <div key={index}>
+                        <p>Fruit: {sale.fruit}</p>
+                        <p>Total Sales: ${sale.totalSales.toFixed(2)}</p>
+                        <p>Total Quantity: {sale.totalQuantity}</p>
+                    </div>
+                ))
+            ) : (
+                <p>No sales data available</p>
+            )}
         </div>
     );
 };
