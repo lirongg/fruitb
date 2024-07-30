@@ -57,18 +57,18 @@ Fruitb Store is a MERN (MongoDB, Express.js, React.js, Node.js) POS Web App.
 ## Features
 
 1. **Homepage & Login page**
- ![HomePage Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/HomePage.png)
- ![Login Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Login.png)
+ ![HomePage Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/HomePage.png)
+ ![Login Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/Login.png)
 
 2. **Customer Pages**
- ![Customer HomePage Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Customer HomePage.png)
- ![Cart Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Customer Cart.png)
- ![Order History Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/customer order history.png)
+ ![Customer HomePage Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/Customer%20HomePage.png)
+ ![Cart Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/Customer%20Cart.png)
+ ![Order History Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/customer%20order%20history.png)
 
 3. **Owner Pages**
- ![Dashboard Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Owner Total sales.png)
- ![All Orders Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/owner all orders.png)
- ![Manage Fruit Screenshot](https://github.com/lirongg/fruitb/blob/client/src/assets/Owner Manage Fruits.png)
+ ![Dashboard Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/Owner%20Total%20sales.png)
+ ![All Orders Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/owner%20all%20orders.png)
+ ![Manage Fruit Screenshot](https://github.com/lirongg/fruitb/blob/main/client/src/assets/Owner%20Manage%20Fruits.png)
 
 ## Technologies Used
 
